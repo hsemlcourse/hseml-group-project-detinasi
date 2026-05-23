@@ -1,10 +1,8 @@
 version: '3.8'
 services:
-  fraud-ml:
+  api:
     build: .
     ports:
-      - "8888:8888"
+      - "8000:8000"
     volumes:
       - .:/app
-    environment:
-      - JUPYTER_TOKEN=fraudproject

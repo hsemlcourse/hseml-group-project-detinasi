@@ -1,5 +1,5 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/kOqwghv0)
-# ML Project — [Название проекта]
+# ML Project — [Обнаружение мошенничества в цифровых платежах]
 
 **Студент:** Детина Степан Ильич
 
@@ -48,7 +48,6 @@
 ├── tests
 │   └── test.py                 # Тесты пайплайна
 ├── requirements.txt            # Зависимости проекта
-├── ruff.toml                   # Конфиг линтера Ruff
 ├── Dockerfile                  # Инструкции для сборки образа
 ├── docker-compose.yml          # Запуск контейнера
 └── README.md
@@ -56,26 +55,16 @@
 
 ## Запуск
 
-```bash
-# 1. Клонировать репозиторий
-git clone <url>
-cd <repo-name>
+1. Скачайте датасет transactions_train.csv и transactions_test.csv с Kaggle. И Поместите скачанные файлы в папку data/raw/.
+2. Запустите notebooks/01_eda.ipynb — он очистит данные, создаст новые признаки и сохранит их в data/processed/.
+3. Запустите notebooks/03_experiments.ipynb — он проведет эксперименты, оттюнингует Random Forest и сохранит финальную модель в models/best_rf_tuned.pkl.
 
-# 2. Создать виртуальное окружение
-python -m venv .venv
-source .venv/bin/activate   # Linux/macOS
-# .venv\Scripts\activate    # Windows
-
-# 3. Установить зависимости
-pip install -r requirements.txt
-```
-
-Альтернативно:
+Когда модель обучена и лежит в папке models/, можно запускать API в Docker-контейнере:
 ```bash
 # 1. Запуск сборки и старт контейнера
 docker-compose up --build
 
-# 2. Откройте в браузере http://localhost:8888 
+# 2. Откройте в браузере http://localhost:8000
 # Пароль для доступа: fraudproject
 ```
 
